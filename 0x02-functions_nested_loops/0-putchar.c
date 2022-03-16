@@ -1,4 +1,4 @@
-#include <stdio.h>
+#include "main.h"
 /**
  * main - Entry point
  *
@@ -6,11 +6,10 @@
  */
 int main(void)
 {
-	char letters[8] = {'_', 'p', 'u', 't', 'c', 'h', 'a', 'r'};
+	char letters[] = "_putchar\n";
 	int i = 0;
 
-	for (i = 0; i < 8; i++)
-		putchar(letters[i]);
-	putchar('\n');
+	for (i = 0; i < 9; i++)
+		_putchar(letters[i]);
 	return (0);
 }
