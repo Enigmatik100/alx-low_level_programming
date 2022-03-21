@@ -1,5 +1,4 @@
 #include "main.h"
-#include <stdio.h>
 
 /**
  *  * main - check the code
@@ -9,12 +8,8 @@
 int main(void)
 {
 	    char *str;
-	        int len;
 
-		    str = "My first strlen!";
-	char * s;
-		        len = _strlen(str);
-			    printf("%d\n", len);
-	printf("%d", _strlen(s));	
-	    		    return (0);
+	        str = "I do not fear computers. I fear the lack of them - Isaac Asimov";
+		    print_rev(str);
+		        return (0);
 }
