@@ -11,7 +11,11 @@ int main(void)
 	    char s[10] = "My School";
 
 	        printf("%s\n", s);
-		    rev_string(s);
-		        printf("%s\n", s);
-			    return (0);
+		 rev_string(s);
+		 printf("%s\n", s);
+
+		char str[10] = "Holberton!";
+		rev_string(str);
+		 printf("%s", str);
+		 return (0);
 }
