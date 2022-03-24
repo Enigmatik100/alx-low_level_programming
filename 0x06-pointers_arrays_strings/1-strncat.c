@@ -1,9 +1,9 @@
 #include "main.h"
 /**
- * _strncat - function that concatenates two strings
- * @dest: resulting string
- * @src: string that to be substring the n characters
- * @n: number of characters to be concatenated
+ * _strncat - funct
+ * @dest: res
+ * @src: string ths
+ * @n: number of chara
  * Return: pointer on dest
  */
 char *_strncat(char *dest, char *src, int n)
