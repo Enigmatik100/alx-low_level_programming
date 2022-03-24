@@ -1,9 +1,9 @@
 #include "main.h"
 /**
- * _strncat - funct
- * @dest: res
- * @src: string ths
- * @n: number of chara
+ * _strncat - function to concatenate two strings
+ * @dest: pointer on destination string to be returned
+ * @src: string to be concatenated
+ * @n: number of character
  * Return: pointer on dest
  */
 char *_strncat(char *dest, char *src, int n)
@@ -28,6 +28,7 @@ char *_strncat(char *dest, char *src, int n)
 			i++;
 			j++;
 		}
+		dest[i] = '\0';
 	}
 	return (dest);
 }
