@@ -7,7 +7,7 @@
 char *cap_string(char *s)
 {
 	int i = 0, j;
-	char sep[] = [' ', '\t', '\n', ';', '.', '!', '?', '"', '(', ')', '{', '}'];
+	char sep[13] = {' ', '\t', '\n', ';', '.', '!', '?', '"', '(', ')', '{', '}'};
 
 	while (s[i] != '\0')
 	{
@@ -19,7 +19,7 @@ char *cap_string(char *s)
 			{
 				for (j = 0; j < 13; j++)
 				{
-					if(sep[j] == *(s + i - 1))
+					if (sep[j] == *(s + i - 1))
 						s[i] = 'A' + s[i] - 'a';
 				}
 			}
