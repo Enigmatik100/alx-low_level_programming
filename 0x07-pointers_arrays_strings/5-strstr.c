@@ -22,6 +22,7 @@ char *_strstr(char *haystack, char *needle)
 			if (j == length)
 				return (p + i);
 			j = 0;
+			i++;
 		}
 		else
 		{
