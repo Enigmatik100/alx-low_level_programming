@@ -14,15 +14,24 @@ int helper(char *s, char *p)
 	return (helper(s + 1, p - 1));
 }
 /**
+ * end_string - put pointer to end
+ * @p: pointer on string
+ * Return: pointer on end of string
+ */
+char * end_string(char *p)
+{
+	if (*p == '\0')
+		return (p);
+	return (end_string(p + 1));
+}
+/**
  * is_palindrome - check if string is a palindrome
  * @s: string
  * Return: 1 if string is palindrome 0 otherwise
  */
 int is_palindrome(char *s)
 {
-	char *p = s;
+	char *p = end_string(s);
 
-	while (*p != '\0')
-		p++;
 	return (helper(s, p - 1));
 }
