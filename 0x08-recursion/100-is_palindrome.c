@@ -18,7 +18,7 @@ int helper(char *s, char *p)
  * @p: pointer on string
  * Return: pointer on end of string
  */
-char * end_string(char *p)
+char *end_string(char *p)
 {
 	if (*p == '\0')
 		return (p);
