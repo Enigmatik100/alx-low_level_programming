@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include "main.h"
 /**
  * main - entrypoint of c program
  * @argc: number of argument
@@ -10,6 +9,6 @@
 int main(int argc, char **argv)
 {
 	(void)argv;
-	printf("%d\n", argc);
+	printf("%d \n", argc);
 	return (0);
 }
