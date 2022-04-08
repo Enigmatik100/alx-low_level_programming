@@ -9,7 +9,7 @@
  */
 char *str_concat(char *s1, char *s2)
 {
-	int i = 0, j = 0, lens1 = 0, lens2 = 0;
+	int i = 0, j = 0, lens1 = 0, lens2 = 1;
 	char *s;
 
 	if (s1 != NULL)
@@ -25,9 +25,6 @@ char *str_concat(char *s1, char *s2)
 			lens2++;
 		lens2++;
 	}
-
-	if (lens1 + lens2 == 0)
-		return ("");
 
 	s = malloc(sizeof(char) * (lens1 + lens2));
 
