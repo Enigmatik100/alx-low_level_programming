@@ -21,7 +21,7 @@ int main(int ac, char *av[])
 		if (op != '+' && op != '-' && op != '/' && op != '%' && op != '*')
 		{
 			printf("Error\n");
-			exit(98);
+			exit(99);
 		}
 	}
 	a = atoi(av[1]);
