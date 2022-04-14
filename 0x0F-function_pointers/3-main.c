@@ -21,7 +21,6 @@ int main(int ac, char *av[])
 		if (op != '+' && op != '-' && op != '/' && op != '%' && op != '*')
 		{
 			printf("Error\n");
-			return(NULL);
 			exit(99);
 		}
 	}
