@@ -15,15 +15,13 @@ int main(int ac, char *av[])
 		printf("Error\n");
 		exit(98);
 	}
-	if (strlen(av[2]) != 1)
+	op = av[2][0];
+	if (strlen(av[2]) != 1 || (op != '+' && op != '-' && op != '/' && op != '%' && op != '*'))
 	{
-		op = av[2][0];
-		if (op != '+' && op != '-' && op != '/' && op != '%' && op != '*')
-		{
-			printf("Error\n");
-			exit(99);
-		}
+		printf("Error\n");
+		exit(99);
 	}
+
 	a = atoi(av[1]);
 	b = atoi(av[3]);
 	printf("%d\n", get_op_func(av[2])(a, b));
