@@ -15,8 +15,13 @@ int main(int ac, char *av[])
 		printf("Error\n");
 		exit(98);
 	}
+	if (strlen(av[2]) != 1)
+	{
+		printf("Error\n");
+		exit(99);
+	}
 	op = av[2][0];
-	if (strlen(av[2]) != 1 || (op != '+' && op != '-' && op != '/' && op != '%' && op != '*'))
+	if (op != '+' && op != '-' && op != '/' && op != '%' && op != '*')
 	{
 		printf("Error\n");
 		exit(99);
