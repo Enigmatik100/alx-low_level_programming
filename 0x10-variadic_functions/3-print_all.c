@@ -35,7 +35,7 @@ void print_all(const char * const format, ...)
 			case 's':
 				s = va_arg(ap, char *);
 				if (s == NULL)
-					s = "(ceil)";
+					s = "(nil)";
 				printf("%s%s", s, sep);
 				break;
 		}
