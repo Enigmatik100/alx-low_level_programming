@@ -1,5 +1,37 @@
 #include "lists.h"
 #include <stdio.h>
+#include <stdlib.h>
+/**
+ * find_loop - funtion that find a loop and return the start point of the loop
+ * @head: head of the list
+ *
+ * Return: the start point of the loop
+ */
+listint_t *find_loop(listint_t *head)
+{
+	listint_t *slow, *fast;
+
+	slow = head->next;
+	fast = head->next->next;
+
+	while (fast && fast->next)
+	{
+		if (slow == fast)
+			break;
+		slow = slow->next;
+		fast = fast->next->next;
+	}
+	if (slow != fast)
+		return (NULL);
+
+	slow = head;
+	while (slow != fast)
+	{
+		slow = slow->next;
+		fast = fast->next;
+	}
+	return (slow);
+}
 /**
  * print_listint_safe - function that prints a listint_t
  * @head: head of the list
@@ -9,21 +41,31 @@
 size_t print_listint_safe(const listint_t *head)
 {
 	size_t size = 0;
-	long int diff;
+	int found = 0;
+	listint_t *pt, *loopNode;
 
-	while (head)
+	/* if list is null of have one element exit (98) */
+	if (head == NULL || head->next == NULL)
+		exit(98);
+
+	pt = (listint_t *) head;
+	loopNode = find_loop((listint_t *)head);
+	while (pt != NULL)
 	{
-		diff = head - head->next;
-		size++;
-		printf("[%p] %d\n", (void *)head, head->n);
-
-		if (diff > 0)
-			head = head->next;
-		else
+		if (loopNode == pt)
 		{
-			printf("->[%p] %d\n", (void *)head->next, head->next->n);
-			break;
+			if (found == 1)
+			{
+				printf("->[%p] %d\n", (void *)pt, pt->n);
+				size++;
+				return (size);
+			}
+			else
+				found++;
 		}
+		printf("[%p] %d\n", (void *)pt, pt->n);
+		size++;
+		pt = pt->next;
 	}
 	return (size);
 }
