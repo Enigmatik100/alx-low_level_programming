@@ -11,6 +11,8 @@ listint_t *find_loop(listint_t *head)
 {
 	listint_t *slow, *fast;
 
+	if (head == NULL || head->next == NULL)
+		return (NULL);
 	slow = head->next;
 	fast = head->next->next;
 
@@ -43,6 +45,8 @@ size_t print_listint_safe(const listint_t *head)
 	size_t size = 0;
 	int found = 0;
 	listint_t *pt, *loopNode;
+	if (head == NULL)
+		return (0);
 
 	pt = (listint_t *) head;
 	loopNode = find_loop((listint_t *)head);

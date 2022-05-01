@@ -11,7 +11,7 @@
 int main(void)
 {
     listint_t *head;
-    listint_t *head2;
+    listint_t *head2, *head3, *head4;
     listint_t *node;
 
     head2 = NULL;
@@ -34,5 +34,16 @@ int main(void)
     add_nodeint(&head, 402);
     add_nodeint(&head, 1024);
     print_listint_safe(head);
+
+    head3 = NULL;
+    node = add_nodeint(&head3, 9);
+    add_nodeint(&head3, 10);
+    add_nodeint(&head3, 11);
+    node->next = add_nodeint(&head3, 12);
+    print_listint_safe(head3);
+
+    head4 = NULL;
+    add_nodeint(&head4, 111);
+    print_listint_safe(head4);
     return (0);
 }
