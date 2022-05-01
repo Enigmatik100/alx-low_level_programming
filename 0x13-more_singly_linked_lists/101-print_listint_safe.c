@@ -44,10 +44,6 @@ size_t print_listint_safe(const listint_t *head)
 	int found = 0;
 	listint_t *pt, *loopNode;
 
-	/* if list is null of have one element exit (98) */
-	if (head == NULL || head->next == NULL)
-		exit(98);
-
 	pt = (listint_t *) head;
 	loopNode = find_loop((listint_t *)head);
 	while (pt != NULL)
