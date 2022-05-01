@@ -57,7 +57,6 @@ size_t print_listint_safe(const listint_t *head)
 			if (found == 1)
 			{
 				printf("->[%p] %d\n", (void *)pt, pt->n);
-				size++;
 				return (size);
 			}
 			else
