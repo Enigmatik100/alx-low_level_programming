@@ -5,7 +5,7 @@
  *
  * Return: integer
  */
-unsigned int countSetBits(unsigned int n)
+/*unsigned int countSetBits(unsigned int n)
 {
 	unsigned int count = 0, x = n;
 
@@ -16,6 +16,7 @@ unsigned int countSetBits(unsigned int n)
 	}
 	return (count);
 }
+*/
 /**
  * flip_bits - function taht returns the number of bits to be flipped
  * @n: first integer
@@ -25,5 +26,15 @@ unsigned int countSetBits(unsigned int n)
  */
 unsigned int flip_bits(unsigned long int n, unsigned long int m)
 {
-	return (countSetBits(n ^ m));
+	unsigned int i;
+	unsigned int opp;
+
+	opp = n ^ m;
+	i = 0;
+	while (opp != 0)
+	{
+		i = i + (opp & 1);
+		opp = opp >> 1;
+	}
+	return (i);
 }
