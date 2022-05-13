@@ -7,12 +7,12 @@
  */
 unsigned int countSetBits(unsigned int n)
 {
-	unsigned int count = 0;
+	unsigned int count = 0, x = n;
 
-	while (n != 0)
+	while (x != 0)
 	{
-		count = count + (n & 1);
-		n = n >> 1;
+		count = count + (x & 1);
+		x = x >> 1;
 	}
 	return (count);
 }
