@@ -11,8 +11,8 @@ unsigned int countSetBits(unsigned int n)
 
 	while (n)
 	{
-		n = n & (n - 1);
-		count++;
+		count += n & 1;
+		n >>= 1;
 	}
 	return (count);
 }
