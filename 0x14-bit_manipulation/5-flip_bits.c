@@ -8,15 +8,15 @@
  */
 unsigned int flip_bits(unsigned long int n, unsigned long int m)
 {
-	unsigned int i;
-	unsigned int opp;
+	unsigned long int aux;
+	unsigned int i = 0;
 
-	opp = n ^ m;
-	i = 0;
-	while (opp != 0)
+	aux = (n ^ m);
+	while (aux)
 	{
-		i = i + (opp & 1);
-		opp = opp >> 1;
+		i += (aux & 1);
+		aux >>= 1;
 	}
+
 	return (i);
 }
