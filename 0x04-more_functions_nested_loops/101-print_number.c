@@ -1,10 +1,10 @@
 #include "main.h"
 /**
- * length_nbr - order of scale of the number
+ * scale_order - order of scale of the number
  * @n: number
  * Return: length of number
  */
-int length_nbr(int n)
+int scale_order(int n)
 {
 	int val = 1;
 
@@ -21,16 +21,16 @@ int length_nbr(int n)
  */
 void print_number(int n)
 {
-	int length = length_nbr(n);
+	int length = scale_order(n);
 
 	if (n < 0)
 	{
 		_putchar('-');
-		n = -1 * n;
+		n = -n;
 	}
 	while (length != 0)
 	{
-		_putchar(n / length + '0');
+		_putchar((n / length) + '0');
 		n = n % length;
 		length = length / 10;
 	}
