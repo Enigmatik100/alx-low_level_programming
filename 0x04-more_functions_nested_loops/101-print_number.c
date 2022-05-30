@@ -1,38 +1,37 @@
 #include "main.h"
 /**
- * scale_order - order of scale of the number
- * @n: number
- * Return: length of number
+ * print_number - prints numbers
+ * @n: number to be printed
+ * Return:void
  */
-int scale_order(int n)
-{
-	int val = 1;
 
-	while (n / 10 != 0)
-	{
-		n = n / 10;
-		val = val * 10;
-	}
-	return (val);
-}
-/**
- * print_number - function that prints an integer
- * @n: integer to printed
- */
 void print_number(int n)
 {
-	int length;
+
+	int d = 1, i = 0, ii = 0;
 
 	if (n < 0)
 	{
 		_putchar('-');
 		n = -n;
 	}
-	length = scale_order(n);
-	while (length != 0)
+
+	while (n / d != 0)
 	{
-		_putchar((n / length) + '0');
-		n = n % length;
-		length = length / 10;
+		d *= 10;
+		i++;
 	}
+	d = d / 10;
+
+	while (ii < i)
+	{
+		_putchar('0' + n / d);
+		n = n - (n / d) * d;
+		d = d / 10;
+		ii++;
+	}
+
+	if (i == 0)
+		_putchar('0' + n);
+
 }
