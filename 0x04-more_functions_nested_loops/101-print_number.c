@@ -21,13 +21,14 @@ int scale_order(int n)
  */
 void print_number(int n)
 {
-	int length = scale_order(n);
+	int length;
 
 	if (n < 0)
 	{
 		_putchar('-');
 		n = -n;
 	}
+	length = scale_order(n);
 	while (length != 0)
 	{
 		_putchar((n / length) + '0');
