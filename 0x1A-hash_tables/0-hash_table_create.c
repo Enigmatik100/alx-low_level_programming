@@ -1,5 +1,4 @@
 #include "hash_tables.h"
-#include <stdlib.h>
 /**
  * hash_table_create - function that creates hash table
  * @size: size of the hash table
@@ -7,7 +6,7 @@
  */
 hash_table_t *hash_table_create(unsigned long int size)
 {
-	hash_table_t *ht = NULL;
+	hash_table_t *ht;
 	unsigned long int i;
 
 	if (size < 1)
@@ -18,7 +17,7 @@ hash_table_t *hash_table_create(unsigned long int size)
 	if (ht == NULL)
 		return (NULL);
 
-	ht->array = malloc(size * sizeof(hash_node_t *));
+	ht->array = malloc(sizeof(hash_node_t *) * size);
 
 	if (ht->array == NULL)
 		return (NULL);
