@@ -19,6 +19,7 @@ hash_node_t *create_node(const char *key, const char *value)
 	newNode->value = strdup(value);
 	if (newNode->value == NULL)
 		return (NULL);
+	newNode->next = NULL;
 
 	return (newNode);
 }
@@ -34,10 +35,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	hash_node_t *findNode, *newNode;
 	unsigned long int index;
 
-	if (ht == NULL)
-		return (0);
-
-	if (key == NULL)
+	if (ht == NULL || key == NULL)
 		return (0);
 
 	index = key_index((unsigned char *)key, ht->size);
