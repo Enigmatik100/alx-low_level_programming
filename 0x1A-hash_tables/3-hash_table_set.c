@@ -18,7 +18,10 @@ hash_node_t *create_node(const char *key, const char *value)
 
 	newNode->value = strdup(value);
 	if (newNode->value == NULL)
+	{
+		free(newNode->key);
 		return (NULL);
+	}
 	newNode->next = NULL;
 
 	return (newNode);
@@ -39,19 +42,20 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 		return (0);
 
 	index = key_index((unsigned char *)key, ht->size);
-	findNode = (ht->array)[index];
+	findNode = ht->array[index];
 	newNode = create_node(key, value);
 	if (newNode == NULL)
 		return (0);
+
 	/* if this col of the hash table is empty */
 	if (findNode == NULL)
 	{
-		(ht->array)[index] = newNode;
+		ht->array[index] = newNode;
 		return (1);
 	}
 
 	newNode->next = findNode;
-	(ht->array)[index] = newNode;
+	ht->array[index] = newNode;
 
 	return (1);
 }
