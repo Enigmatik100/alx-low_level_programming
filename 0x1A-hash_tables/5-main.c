@@ -10,9 +10,11 @@
  */
 int main(void)
 {
-    hash_table_t *ht;
+    hash_table_t *ht, *ht2;
 
     ht = hash_table_create(1024);
+    ht = hash_table_create(1);
+    ht2 = NULL;
     hash_table_print(ht);
     hash_table_set(ht, "c", "fun");
     hash_table_set(ht, "python", "awesome");
@@ -22,5 +24,6 @@ int main(void)
     hash_table_set(ht, "Betty", "Cool");
     hash_table_set(ht, "98", "Battery Street");
     hash_table_print(ht);
+    hash_table_print(ht2);
     return (EXIT_SUCCESS);
 }
