@@ -17,6 +17,10 @@ int main(void)
     ht2 = NULL;
     hash_table_print(ht);
     hash_table_set(ht, "c", "fun");
+    hash_table_set(ht, "hetairas", "fun1-1");
+    hash_table_set(ht, "mentioner", "fun1-2");
+    hash_table_set(ht, "depravement", "colid2-1");
+    hash_table_set(ht, "serafins", "colid2-2");
     hash_table_set(ht, "python", "awesome");
     hash_table_set(ht, "Bob", "and Kris love asm");
     hash_table_set(ht, "N", "queens");
