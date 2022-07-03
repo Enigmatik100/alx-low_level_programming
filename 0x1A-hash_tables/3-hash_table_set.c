@@ -1,76 +1,53 @@
 #include "hash_tables.h"
+
 /**
- * create_node - function to test for collision
- * @key: the new key
- * @value: the value
- * Return: pointer on hash_node_t
- */
-hash_node_t *create_node(const char *key, const char *value)
-{
-	hash_node_t *newNode;
-
-	newNode = malloc(sizeof(hash_node_t));
-	if (newNode == NULL)
-		return (NULL);
-	newNode->key = strdup(key);
-	if (newNode->key == NULL)
-		return (NULL);
-
-	newNode->value = strdup(value);
-	if (newNode->value == NULL)
-	{
-		free(newNode->key);
-		return (NULL);
-	}
-	newNode->next = NULL;
-
-	return (newNode);
-}
-/**
- * hash_table_set - Function that add an element to the hash table
- * @ht: pointer on the hash table
- * @key: pointer on the key
- * @value: pointer on the value
- * Return: 1 if it succeeded, 0 otherwise
+ * hash_table_set - Add or update an element in a hash table.
+ * @ht: A pointer to the hash table.
+ * @key: The key to add - cannot be an empty string.
+ * @value: The value associated with key.
+ *
+ * Return: Upon failure - 0.
+ *         Otherwise - 1.
  */
 int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
-	hash_node_t *findNode, *newNode, *currNode;
-	unsigned long int index;
+	hash_node_t *new;
+	char *value_copy;
+	unsigned long int index, i;
 
-	if (ht == NULL || key == NULL || strlen(key) == 0)
+	if (ht == NULL || key == NULL || *key == '\0' || value == NULL)
 		return (0);
 
-	index = key_index((unsigned char *)key, ht->size);
-	findNode = ht->array[index];
-	newNode = create_node(key, value);
-	if (newNode == NULL)
+	value_copy = strdup(value);
+	if (value_copy == NULL)
 		return (0);
 
-	/* if this col of the hash table is empty */
-	if (findNode == NULL)
+	index = key_index((const unsigned char *)key, ht->size);
+	for (i = index; ht->array[i]; i++)
 	{
-		ht->array[index] = newNode;
-		return (1);
-	}
-
-	/* key is already in the hash table */
-	currNode = findNode;
-	while (currNode->next != NULL)
-	{
-		if (currNode->key != NULL && strcmp(currNode->key, key) == 0)
+		if (strcmp(ht->array[i]->key, key) == 0)
 		{
-			free(currNode->value);
-			currNode->value = strdup(value);
-			if (currNode->value == NULL)
-				return (0);
+			free(ht->array[i]->value);
+			ht->array[i]->value = value_copy;
 			return (1);
 		}
-		currNode = currNode->next;
 	}
 
-	newNode->next = findNode;
-	ht->array[index] = newNode;
+	new = malloc(sizeof(hash_node_t));
+	if (new == NULL)
+	{
+		free(value_copy);
+		return (0);
+	}
+	new->key = strdup(key);
+	if (new->key == NULL)
+	{
+		free(new);
+		return (0);
+	}
+	new->value = value_copy;
+	new->next = ht->array[index];
+	ht->array[index] = new;
 
 	return (1);
 }
