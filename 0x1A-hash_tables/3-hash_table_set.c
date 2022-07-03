@@ -60,9 +60,10 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	{
 		if (currNode->key != NULL && strcmp(currNode->key, key) == 0)
 		{
-			free(newNode->key);
-			free(newNode->value);
-			free(newNode);
+			free(currNode->value);
+			currNode->value = strdup(value);
+			if (currNode->value == NULL)
+				return (0);
 			return (1);
 		}
 		currNode = currNode->next;
