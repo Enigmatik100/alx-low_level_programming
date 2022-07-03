@@ -58,7 +58,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	currNode = findNode;
 	while (currNode->next != NULL)
 	{
-		if (findNode->key != NULL && strcmp(findNode->key, key) == 0)
+		if (currNode->key != NULL && strcmp(currNode->key, key) == 0)
 		{
 			free(newNode->key);
 			free(newNode->value);
